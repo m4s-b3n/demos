@@ -1,0 +1,16 @@
+# Lab: File
+
+```bash
+# create base image for testing purpose
+docker build \
+  --secret id=npmrc,src=.npmrc \
+  -t secret-file-base \
+  --target base \
+  .
+
+# check if npmrc was is present
+docker run \
+  --entrypoint=/bin/sh \
+  secret-file-base \
+  -c "cat /root/.npmrc"
+```
